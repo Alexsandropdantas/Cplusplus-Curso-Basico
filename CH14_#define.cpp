@@ -11,15 +11,15 @@ int main ()
 	return 0;
 }
 
-// Se quisermos mudar o nosso valor de PI, ou da VERSAO, no programa acima, basta mexer no in?cio do programa. Isto torna o programa mais flex?vel. H? quem diga que, em um programa, nunca se deve usar constantes como 10, 3.1416, etc., pois estes s?o n?meros que ningu?m sabe o que significam (muitas pessoas os chamam de "n?meros m?gicos"). Ao inv?s disto, deve-se usar apenas #defines. ? uma conven??o de programa??o (que deve ser seguida, pois torna o programa mais leg?vel) na linguagem C que as macros declaradas em #defines devem ser todas em mai?sculas.
+// Se quisermos mudar o nosso valor de PI, ou da VERSAO, no programa acima, basta mexer no início do programa. Isto torna o programa mais flexível. Há quem diga que, em um programa, nunca se deve usar constantes como 10, 3.1416, etc., pois estes são números que ninguém sabe o que significam (muitas pessoas os chamam de "números mágicos"). Ao invés disto, deve-se usar apenas #defines. é uma convenção de programação (que deve ser seguida, pois torna o programa mais legível) na linguagem C que as macros declaradas em #defines devem ser todas em maiúsculas.
 
 // Um outro uso da diretiva #define ? o de simplesmente definir uma macro. Neste caso usa-se a seguinte forma geral:
 
 #define nome_da_macro
 
-// Neste caso o objetivo n?o ? usar a macro no programa (pois ela seria substitu?da por nada), mas, sim, definir uma macro para ser usada como uma esp?cie de flag. Isto quer dizer que estamos definindo um valor como sendo "verdadeiro" para depois podermos test?-lo.
+// Neste caso o objetivo não é usar a macro no programa (pois ela seria substituída por nada), mas, sim, definir uma macro para ser usada como uma espécie de flag. Isto quer dizer que estamos definindo um valor como sendo "verdadeiro" para depois podermos testá-lo.
 
-// Tamb?m ? poss?vel definir macros com argumentos. Veja o exemplo a seguir:
+// Tambem é possível definir macros com argumentos. Veja o exemplo a seguir:
 
 #define max(A,B) ((A>B) ? (A):(B))
 #define min(A,B) ((A<B) ? (A):(B))
@@ -27,7 +27,7 @@ int main ()
 x = max(i,j);
 y = min(t,r);
 
-// Embora pare?a uma chamada de fun??o, o uso de max (ou min) simplesmente substitui, em tempo de compila??o, o c?digo especificado. Cada ocorr?ncia de um par?metro formal (A ou B, na defini??o) ser? substitu?do pelo argumento real correspondente. Assim, a linha de c?digo:
+// Embora pareça uma chamada de função, o uso de max (ou min) simplesmente substitui, em tempo de compilação, o cádigo especificado. Cada ocorrência de um parâmetro formal (A ou B, na definição) será substituído pelo argumento real correspondente. Assim, a linha de código:
 
 x = max(i,j);
 
@@ -35,7 +35,7 @@ x = max(i,j);
 
 x = ((i)>(j) ? (i):(j));
 
-// A linha de c?digo:
+// A linha de código:
 
 x = max(p+q,r+s);
 
@@ -43,41 +43,41 @@ x = max(p+q,r+s);
 
 x = ((p+q)>(r+s) ? (p+q):(r+s));
 
-// Isto pode ser muito ?til. Verifique que as macros max e min n?o possuem especifica??o de tipo. Logo, elas trabalham corretamente para qualquer tipo de dado, enquanto os argumentos passados forem coerentes. Mas isto pode trazer tamb?m algumas armadilhas. Veja que a linha
+// Isto pode ser muito útil. Verifique que as macros max e min não possuem especificação de tipo. Logo, elas trabalham corretamente para qualquer tipo de dado, enquanto os argumentos passados forem coerentes. Mas isto pode trazer também algumas armadilhas. Veja que a linha
 
 x = max(p++,r++);
 
-// será substitu?da pelo c?digo
+// será substituída pelo código
 
 x = ((p++)>(r++) ? (p++):(r++));
 
-// e em consequência, incrementar? o maior valor duas vezes.
+// e em consequência, incrementará o maior valor duas vezes.
 
-// Outra armadilha em macros est? relacionada com o uso de par?nteses. Seja a macro:
+// Outra armadilha em macros está relacionada com o uso de parênteses. Seja a macro:
 
 #define SQR(X) X*X
 
-// Imagine que voc? utilize esta macro na express?o abaixo:
+// Imagine que você utilize esta macro na expressão abaixo:
 
 y = SQR(A+B);
 
-// Ao fazer isto, a substitui??o que ser? efetuada n?o estar? correta. A express?o gerada ser?:
+// Ao fazer isto, a substituição que será efetuada não estará correta. A expressão gerada ser?:
 
 y = A+B*A+B;
 
-// que obviamente ? diferente de (A+B)*(A+B)   !
+// que obviamente é diferente de (A+B)*(A+B)   !
 
-// A solução para este problema ? incluir par?nteses na defini??o da macro:
+// A solução para este problema é incluir parênteses na definição da macro:
 
 #define SQR(X)(X)*(X)
 
  
 
-// Quando você utiliza a diretiva #define nunca deve haver espa?os em branco no identificador. Por exemplo, a macro:
+// Quando você utiliza a diretiva #define nunca deve haver espaços em branco no identificador. Por exemplo, a macro:
 
 #define PRINT (i) printf(" %d \n", i)
 
-// não funcionará corretamente porque existe um espa?o em branco entre PRINT e (i). Ao se tirar o espa?o, a macro funcionar? corretamente e poder? ser utilizada para imprimir o n?mero inteiro i, saltando em seguida para a pr?xima linha.
+// não funcionará corretamente porque existe um espaço em branco entre PRINT e (i). Ao se tirar o espaço, a macro funcionar? corretamente e poderá ser utilizada para imprimir o número inteiro i, saltando em seguida para a próxima linha.
 
  
 
@@ -85,7 +85,7 @@ y = A+B*A+B;
 
  #undef nome_da_macro
 
-//  Ela faz com que a macro que a segue seja apagada da tabela interna que guarda as macros.O compilador passa a partir deste ponto a n?o conhecer mais esta macro.
+//  Ela faz com que a macro que a segue seja apagada da tabela interna que guarda as macros.O compilador passa a partir deste ponto a não conhecer mais esta macro.
 
 
       
